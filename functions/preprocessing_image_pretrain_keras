@@ -1,0 +1,5 @@
+from keras.applications.resnet50 import preprocess_input
+
+# Preprocess the data
+train_dataset = train_dataset.map(lambda x, y: (preprocess_input(x), y))
+val_dataset = val_dataset.map(lambda x, y: (preprocess_input(x), y))

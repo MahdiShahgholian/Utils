@@ -1,0 +1,31 @@
+from keras.utils import image_dataset_from_directory
+
+train_dataset = image_dataset_from_directory(
+    directory = './data/',
+    labels = 'inferred',
+    label_mode = 'int',
+    color_mode = 'rgb',
+    batch_size = 32,
+    image_size = (224, 224),
+    seed = 1,
+    shuffle = True,
+    validation_split = 0.2,
+    subset = 'training'
+
+)
+
+# find the class names so in prediction time we can map the predictions to the painters properly
+class_names = train_dataset.class_names
+print('Class names:', class_names)
+
+val_dataset = image_dataset_from_directory(
+    directory = './data/',
+    labels = 'inferred',
+    label_mode = 'int',
+    color_mode = 'rgb',
+    batch_size = 32,
+    image_size = (224, 224),
+    seed = 1,
+    validation_split = 0.2,
+    subset = 'validation'
+)

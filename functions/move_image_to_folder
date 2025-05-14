@@ -1,0 +1,9 @@
+import shutil
+
+# create a folder for each label
+for label in df_train.label.unique():
+    os.makedirs(f'data/{label}', exist_ok=True)
+
+# move each image to its corresponding label folder
+for i, row in df_train.iterrows():
+    shutil.move(row.full_path, f'data/{row.label}')
